@@ -1,3 +1,20 @@
+# ASSIGNMENT: CH 3 Portfolio
+# This program is a digital portfolio for this assignment
+
+# List of files in the repository:
+# - portfolio.py
+# - MY_DATA.md
+# - README.md
+
+# The program can be run through GitHub
+# Key features of my program is the portfolio database used to store college life information 
+
+# I learned a lot from this assignment! It was quite challenging because I've never used Git but It wasn't too hard. I enjoyed getting to code for real for the first time.
+
+# AI used to correct final corrections in all the end state. I used GitHub AI to discover exactly where I went wrong in my code as a learning tool.
+
+# Assignment 3: Personal Data Portfolio & Git Collaboration
+
 ## Welcome!
 
 This repository is your workspace for Assignment 3. Follow the instructions in the assignment document to complete this project.
