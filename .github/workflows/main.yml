@@ -1,0 +1,100 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: String Variables Test
+      id: string-variables-test
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: String Variables Test
+        setup-command: sudo -H pip3 install pytest
+        command: pytest test_portfolio.py::test_string_variables -v
+        timeout: 10
+        max-score: 7
+    - name: List Variables Test
+      id: list-variables-test
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: List Variables Test
+        setup-command: ''
+        command: pytest test_portfolio.py::test_list_variables -v
+        timeout: 10
+        max-score: 7
+    - name: Tuple Variables Test
+      id: tuple-variables-test
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Tuple Variables Test
+        setup-command: ''
+        command: pytest test_portfolio.py::test_tuple_variables -v
+        timeout: 10
+        max-score: 7
+    - name: Set Variables Test
+      id: set-variables-test
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Set Variables Test
+        setup-command: ''
+        command: pytest test_portfolio.py::test_set_variables -v
+        timeout: 10
+        max-score: 7
+    - name: Dictionary Variables Test
+      id: dictionary-variables-test
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Dictionary Variables Test
+        setup-command: ''
+        command: pytest test_portfolio.py::test_dictionary_variables -v
+        timeout: 10
+        max-score: 7
+    - name: Calculations Test
+      id: calculations-test
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Calculations Test
+        setup-command: ''
+        command: pytest test_portfolio.py::test_calculations -v
+        timeout: 10
+        max-score: 19
+    - name: No Functions Test
+      id: no-functions-test
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: No Functions Test
+        setup-command: ''
+        command: pytest test_portfolio.py::test_no_functions_used -v
+        timeout: 10
+        max-score: 3
+    - name: Code Runs Without Errors
+      id: code-runs-without-errors
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Code Runs Without Errors
+        setup-command: ''
+        command: pytest test_portfolio.py::test_code_runs -v
+        timeout: 10
+        max-score: 3
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        STRING-VARIABLES-TEST_RESULTS: "${{steps.string-variables-test.outputs.result}}"
+        LIST-VARIABLES-TEST_RESULTS: "${{steps.list-variables-test.outputs.result}}"
+        TUPLE-VARIABLES-TEST_RESULTS: "${{steps.tuple-variables-test.outputs.result}}"
+        SET-VARIABLES-TEST_RESULTS: "${{steps.set-variables-test.outputs.result}}"
+        DICTIONARY-VARIABLES-TEST_RESULTS: "${{steps.dictionary-variables-test.outputs.result}}"
+        CALCULATIONS-TEST_RESULTS: "${{steps.calculations-test.outputs.result}}"
+        NO-FUNCTIONS-TEST_RESULTS: "${{steps.no-functions-test.outputs.result}}"
+        CODE-RUNS-WITHOUT-ERRORS_RESULTS: "${{steps.code-runs-without-errors.outputs.result}}"
+      with:
+        runners: string-variables-test,list-variables-test,tuple-variables-test,set-variables-test,dictionary-variables-test,calculations-test,no-functions-test,code-runs-without-errors
