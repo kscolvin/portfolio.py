@@ -49,3 +49,42 @@ contact_directory = {"Mom": "704-555-0199", "Roommate": "336-555-7821", "Academi
 # Calculation variable
 completed_count = len(completed_courses)  
 contact_delivery = contact_directory
+
+# Total current credits
+total_credits = sum(course_credits.values())
+
+# Cumulative GPA 
+cumulative_gpa = round(sum(gpa_history) / len(gpa_history), 2)
+
+# Complete course count
+complete_count = len(completed_courses)
+
+# Total weekly study hours
+total_study_hours = sum(study_hours.values())
+
+# Academic load
+academic_load = total_credits + total_study_hours
+
+# Monly budget total
+monthly_total = sum(monthly_budget.values())
+
+# Daily food budget
+daily_food_budget = round(monthly_budget["Food"] / 30, 2)
+
+# Annual budget projection
+annual_budget = monthly_total * 12
+
+# Study cost per credit hour
+cost_per_hour = round(monthly_budget["Books"] / total_study_hours, 2)
+
+# Total social media followers
+total_followers = instagram_info[2] + twitter_info[2]
+
+# Skill count comparison
+current_skills_count = len(current_skills)
+
+skills_to_learn_count = len(skills_to_learn) 
+current_skill_count = len(current_skills)
+
+# Contact directory use
+contact_count = len(contact_delivery)
